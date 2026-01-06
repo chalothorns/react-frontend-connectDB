@@ -28,7 +28,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(API, form);
+      await axios.post(API, form, {withCredentials: true});
       await fetchUsers();
       // Reset the form
       setForm({
@@ -44,7 +44,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this user?")) return;
-    await axios.delete(`${API}/${id}`);
+    await axios.delete(`${API}/${id}`, {withCredentials: true});
     setUsers(users.filter((user) => user._id !== id));
   };
 
@@ -59,7 +59,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
 
   const handleEditSave = async (id) => {
     try {
-      await axios.patch(`${API}/${id}`, editForm);
+      await axios.patch(`${API}/${id}`, editForm, {withCredentials: true});
       await fetchUsers();
       setEditId(null);
     } catch (error) {
