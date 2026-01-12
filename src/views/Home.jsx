@@ -39,11 +39,13 @@ export default function Home() {
     setAskResult(null);
 
     try {
+      
       const response = await axios.post(
         `${apiBase}/auth/ai/ask`,
         { question: question, topK: 5 },
         { withCredentials: true }
       );
+      
       setAskResult(response.data?.data || null);
     } catch (error) {
       const message =
@@ -56,6 +58,7 @@ export default function Home() {
       setAskLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen p-6 gap-y-6 flex flex-col justify-start w-full">

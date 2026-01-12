@@ -99,6 +99,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
           onChange={handleChange}
           value={form.password}
           name="password"
+          type="password"
           className="bg-white mx-1 w-32 px-2 rounded border"
           placeholder="Password"
         />
